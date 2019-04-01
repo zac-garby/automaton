@@ -1,6 +1,6 @@
 *.hi
 *.o
 gol
-out*
+out
 .cabal*
 .DS_Store
