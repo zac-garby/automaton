@@ -6,7 +6,7 @@ A Haskell library for easily defining cellular automata.
  - Some helpful functions to generate a random grid, apply game-of-life rules, and more
  - Simple to define a new rule
 
-![](eg/gol.gif)
+<center>![](eg/gol.gif)</center>
 
 To run an example, clone the repository and install [gifgen](https://github.com/lukechilds/gifgen), then run:
 
