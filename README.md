@@ -33,3 +33,31 @@ main = do
         savePngFile ("out/" ++ show i ++ ".png") img
         putStrLn $ "finished step " ++ show i ++ " of 1024"
 ```
+
+If you want to define your own automaton, you will have to make a `Rule a` and a `Palette a`, where `a` is the type of the cells of the grid your automaton will live on. These types are defined as:
+
+```haskell
+type Pos = (Int, Int)
+type Rule a = Pos -> Board a -> a -> a
+type Palette a = a -> Color          -- Color comes from Graphics.GD
+```
+
+`Palette a` will only be needed if you want to render your automaton using the built-in rendering functions, which in 99% of cases you will.
+
+And example rule would be `gol`, defined in the library:
+
+```haskell
+gol :: Rule Bool
+gol pos board True = let n = countNeighbours id board pos in n == 2 || n == 3
+gol pos board False = let n = countNeighbours id board pos in n == 3
+```
+
+It says that an "alive" cell will remain alive only if it has 2 or 3 neighbours, and a "dead" cell will become alive only if it has 3 neighbours.
+
+A palette for this might look like this:
+
+```haskell
+palette :: Palette Bool
+palette True = rgb 255 255 255
+palette False = rgb 0 0 0
+```
