@@ -1,0 +1,6 @@
+*.hi
+*.o
+gol
+out*
+.cabal*
+.DS_Store
