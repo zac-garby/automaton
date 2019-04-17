@@ -53,6 +53,7 @@ gol :: Rule Bool
 gol pos board True = let n = countNeighbours id board pos in n == 2 || n == 3
 gol pos board False = let n = countNeighbours id board pos in n == 3
 ```
+ > `countNeighbours` is used to count the number of immediate neighbours around a given cell (specified by `pos`) which satisfy a predicate. Here, the predicate is `id`, because the game-of-life board is a grid of booleans and so `id` will cause it to count the number of neighbours which are `True`.
 
 It says that an "alive" cell will remain alive only if it has 2 or 3 neighbours, and a "dead" cell will become alive only if it has 3 neighbours.
 
